@@ -73,7 +73,7 @@
 	}
 
 	#main-page {
-		padding: 30px;
+		padding: 30px 15px 30px 30px;
 		display: flex;
 		flex: 1;
 		flex-direction: row;
