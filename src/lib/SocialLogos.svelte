@@ -1,5 +1,5 @@
 <li>
-	<a href="https://twitter.com/">
+	<a href="https://instagram.com/">
 		<span class="icon " data-icon="icon-instagram-custom">
 			<svg
 				width="36px"
