@@ -20,18 +20,31 @@
 			<a class="nav-link" href="/cart"> Cart </a>
 			<a class="nav-link" href="/account"> My Account </a>
 			<!-- svelte-ignore a11y-click-events-have-key-events -->
-			<div class="nav-link" on:click={() => menuOpened = !menuOpened}> MENU</div>
+			<div class="nav-link" style="color: {menuOpened ? "orange" : ""}" on:click={() => menuOpened = !menuOpened}> MENU</div>
 		</div>
 		</nav>
 </header>
 
 <div id="main-page">
+	<div id="main-page-inner">
+		<slot />
+	</div>
 	{#if menuOpened}
 		<div id="slide-menu" transition:fly={{x: 250}}>
-			wdwdwedwddw
+			<div class="menu-item">
+				Shop
+			</div>
+			<div class="menu-item">
+				Search
+			</div>
+			<div class="menu-item">
+				Shipping
+			</div>
+			<div class="menu-item">
+				Faqs
+			</div>
 		</div>
 	{/if}
-	<slot />
 </div>
 
 <footer>
@@ -60,11 +73,15 @@
 	}
 
 	#main-page {
-		padding: 15px;
+		padding: 30px;
 		display: flex;
 		flex: 1;
-		flex-direction: row-reverse;
+		flex-direction: row;
 		overflow-x: clip;
+	}
+
+	#main-page-inner {
+		width: 100%;
 	}
 
 	header {
@@ -101,8 +118,19 @@
 	}
 
 	#slide-menu {
+		display: flex;
+		flex-direction: column;
 		height: 100%;
-		border: 1px solid black;
+		border-radius: 8px;
+		box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+		width: 250px;
+	}
+
+	.menu-item {
+		font-family: "Sunny Spells";
+		text-align: center;
+		font-size: 25px;
+		cursor: pointer;
 	}
 
 	ul {
