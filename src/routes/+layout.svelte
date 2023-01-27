@@ -1,19 +1,36 @@
 <script>
 	// @ts-ignore
 	import SocialLogos from '$lib/SocialLogos.svelte';
+	import { fly } from "svelte/transition";
+
+	let menuOpened = false;
 </script>
 
 <header>
+	<div id="top-bar">
+		<p id="top-bar-text">
+			First Purchase 15% Off & Spend $50 Dollars And Get Shipping For Free!
+		</p>
+	</div>
 	<nav id="nav-container">
-		<a href="/">
-			<img src="tamagoFont.png" alt="Tamago Title Font" />
+		<a href="/" class="nav-link" style="font-size: 65px;">
+			TAMAGO
 		</a>
-		<a class="nav-link" href="/cart"> Cart </a>
-		<a class="nav-link" href="/account"> My Account </a>
-	</nav>
+		<div id="right-nav-container">
+			<a class="nav-link" href="/cart"> Cart </a>
+			<a class="nav-link" href="/account"> My Account </a>
+			<!-- svelte-ignore a11y-click-events-have-key-events -->
+			<div class="nav-link" on:click={() => menuOpened = !menuOpened}> MENU</div>
+		</div>
+		</nav>
 </header>
 
-<div id="main" style="flex: 1;">
+<div id="main-page">
+	{#if menuOpened}
+		<div id="slide-menu" transition:fly={{x: 250}}>
+			wdwdwedwddw
+		</div>
+	{/if}
 	<slot />
 </div>
 
@@ -22,7 +39,7 @@
 		<div id="footer-container-inner">
 			<div id="footer-email-container">
 				<p></p>
-				<input>
+				<!-- <input> -->
 			</div>
 			<div id="socials-container">
 				<ul>
@@ -37,13 +54,55 @@
 </footer>
 
 <style>
+	a, a:visited {
+		color: black;
+		text-decoration: none;
+	}
+
+	#main-page {
+		padding: 15px;
+		display: flex;
+		flex: 1;
+		flex-direction: row-reverse;
+		overflow-x: clip;
+	}
+
 	header {
-		background-color: orange;
+		background-color: white;
 		text-align: center;
 		opacity: 100%;
-		box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-		height: 3em;
 		width: 100%;
+		box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+	}
+
+	#top-bar {
+		height: 1.2em;
+		background-color: orange;
+		overflow: hidden;
+	}
+
+	#top-bar-text {
+		margin: 0;
+		height: 100%;
+		line-height: 100%;
+		position: relative;
+		font-family: "Comic Sans MS", "Comic Sans", cursive;
+		overflow: hidden;
+		animation: scroll-text 30s infinite ;
+	}
+
+	@keyframes scroll-text {
+		0% {
+			transform: translateX(100%);
+		}
+		100% {
+			transform: translateX(-100%);
+		}
+	}
+
+	#slide-menu {
+		height: 100%;
+		border: 1px solid black;
 	}
 
 	ul {
@@ -54,7 +113,7 @@
 	}
 
 	footer {
-		margin-top: 50px;
+		/* margin-top: 50px; */
 		width: 100%;
 	}
 
@@ -69,9 +128,9 @@
 		padding: 20px;
 	}
 
-	#footer-email-container {
+	/* #footer-email-container {
 
-	}
+	} */
 
 	#socials-container {
 		display: flex;
@@ -81,23 +140,31 @@
 	#copyright-container {
 		padding-bottom: 10px;
 		text-align: center;
+		font-family: "Sunny Spells";
+		font-size: 20px;
 	}
 
 	#nav-container {
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
-		height: 100%;
-		padding: 0 6px 0 6px;
+		padding: 0 15px 0 15px;
+	}
+
+	#right-nav-container {
+		display: flex;
+		gap: 25px;
 	}
 
 	.nav-link {
 		align-self: center;
+		font-family: "Sunny Spells";
+		font-size: 30px;
+		cursor: pointer;
 	}
 
-	img {
-		height: 100%;
-		object-fit: contain;
+	.nav-link:hover {
+		color: orange;
 	}
 
 	:global(body) {

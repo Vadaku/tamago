@@ -9,17 +9,17 @@
     <title>TAMAGO</title>
 </svelte:head>
 
-<div id="example-container">
+<!-- <div id="example-container">
     {#each exampleArr as example}
         <div class="examples">
 
         </div>
     {/each}
-</div>
+</div> -->
 
 <style>
 
-    #example-container {
+    /* #example-container {
         height: 100%;
         width: 100%;
         display: flex;
@@ -27,9 +27,8 @@
     }
 
     .examples {
-        border: 1px solid black;
         height: 200px;
         width: 200px;
-    }
+    } */
 
 </style>
